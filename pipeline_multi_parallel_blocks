@@ -7,12 +7,14 @@ pipeline {
                     steps {
                         echo "Block 1 - Stage 1. Triggered at time:"
                         sh(script: "date -u")
+                        build(job: 'allure_behave_latest_1')
                     }
                 }
                 stage('Block 1 - Stage 2') {
                     steps {
                         echo "Block 1 - Stage 2. Triggered at time:"
                         sh(script: "date -u")
+                        build(job: 'allure_behave_latest_2')
                     }
                 }
             }
