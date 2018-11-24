@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('MultiJob Pipeline Job') {
             parallel {
-                stage('Parallel Test 1') {
+                stage('Stage 1 - Parallel Test 1') {
                     steps {
                         echo "Here trigger job: allure_behave. Triggered at time:"
                         sh(script: "date -u")
@@ -12,15 +12,19 @@ pipeline {
                 }
                 stage('Parallel Test 2') {
                     parallel {
-                        stage('Stage 2 - Parallel Test 1 ') {
-                            echo "Here trigger job: allure_behave_latest. Triggered at time:"
-                            sh(script: "date -u")
-                            build(job: "allure_behave_latest")
+                        stage('Stage 2 - Parallel Test 1') {
+                            steps {
+                                echo "Here trigger job: allure_behave_latest. Triggered at time:"
+                                sh(script: "date -u")
+                                build(job: "allure_behave_latest")
+                            }
                         }
-                        stage('Stage 2 - Parallel Test 1 ') {
-                            echo "Here trigger job: allure_behave_old. Triggered at time:"
-                            sh(script: """date -u""")
-                            build(job: "allure_behave_old")
+                        stage('Stage 2 - Parallel Test 2') {
+                            steps {
+                                echo "Here trigger job: allure_behave_old. Triggered at time:"
+                                sh(script: """date -u""")
+                                build(job: "allure_behave_old")
+                            }
                         }
                     }
                 }
