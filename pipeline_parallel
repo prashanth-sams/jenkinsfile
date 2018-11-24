@@ -1,7 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Parallel stage') {
+        stage('Non-Parallel Stage') {
+            steps {
+                echo "Executing this stage first"
+            }
+        }
+        stage('Parallel Stage') {
             parallel {
                 stage('Parallel Test 1') {
                     steps {
