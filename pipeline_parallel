@@ -14,7 +14,7 @@ pipeline {
                     steps {
                         echo "Here trigger job: allure_behave_new. Triggered at time:"
                         sh(script: "date -u")
-                        build(job: "allure_behave_new")
+                        build(job: "allure_behave_latest")
                         echo "Here trigger job: allure_behave_old. Triggered at time:"
                         sh(script: """date -u""")
                         build(job: "allure_behave_old")
