@@ -5,15 +5,13 @@ pipeline {
             steps {
                 script {
                     def tests1 = [:]
-                    stage('a') {
-                        tests1["test_1"] = {
-                            echo "test_1"
-                            build(job: 'allure_behave_latest_1')
-                        }
-                        tests1["test_2"] = {
-                            echo "test_2"
-                            build(job: 'allure_behave_latest_2')
-                        }
+                    tests1["test_1"] = {
+                        echo "test_1"
+                        build(job: 'allure_behave_latest_1')
+                    }
+                    tests1["test_2"] = {
+                        echo "test_2"
+                        build(job: 'allure_behave_latest_2')
                     }
                     parallel tests1
                 }
@@ -23,15 +21,13 @@ pipeline {
             steps {
                 script {
                     def tests2 = [:]
-                    stage('b') {
-                        tests2["test_3"] = {
-                            echo "test_3"
-                            build(job: 'allure_behave_latest')
-                        }
-                        tests2["test_4"] = {
-                            echo "test_4"
-                            build(job: 'allure_behave_old')
-                        }
+                    tests2["test_3"] = {
+                        echo "test_3"
+                        build(job: 'allure_behave_latest')
+                    }
+                    tests2["test_4"] = {
+                        echo "test_4"
+                        build(job: 'allure_behave_old')
                     }
                     parallel tests2
                 }
