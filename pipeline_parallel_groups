@@ -6,32 +6,36 @@ pipeline {
                 stage('Parallel Test 1') {
                     steps {
                         script {
-                            def tests1 = [:]
+                            def group1 = [:]
                             tests1["test_1"] = {
                                 echo "test_1"
+                                sh(script: "date -u")
                                 build(job: 'allure_behave_latest_1')
                             }
                             tests1["test_2"] = {
                                 echo "test_2"
+                                sh(script: "date -u")
                                 build(job: 'allure_behave_latest_2')
                             }
-                            parallel tests1
+                            parallel group1
                         }
                     }
                 }
                 stage('Parallel Test 2') {
                     steps {
                         script {
-                            def tests2 = [:]
+                            def group2 = [:]
                             tests2["test_3"] = {
                                 echo "test_3"
+                                sh(script: "date -u")
                                 build(job: 'allure_behave_latest')
                             }
                             tests2["test_4"] = {
                                 echo "test_4"
+                                sh(script: "date -u")
                                 build(job: 'allure_behave_old')
                             }
-                            parallel tests2
+                            parallel group2
                         }
                     }
                 }
