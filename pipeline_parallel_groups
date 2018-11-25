@@ -7,12 +7,12 @@ pipeline {
                     steps {
                         script {
                             def group1 = [:]
-                            tests1["test_1"] = {
+                            group1["test_1"] = {
                                 echo "test_1"
                                 sh(script: "date -u")
                                 build(job: 'allure_behave_latest_1')
                             }
-                            tests1["test_2"] = {
+                            group1["test_2"] = {
                                 echo "test_2"
                                 sh(script: "date -u")
                                 build(job: 'allure_behave_latest_2')
@@ -25,12 +25,12 @@ pipeline {
                     steps {
                         script {
                             def group2 = [:]
-                            tests2["test_3"] = {
+                            group2["test_3"] = {
                                 echo "test_3"
                                 sh(script: "date -u")
                                 build(job: 'allure_behave_latest')
                             }
-                            tests2["test_4"] = {
+                            group2["test_4"] = {
                                 echo "test_4"
                                 sh(script: "date -u")
                                 build(job: 'allure_behave_old')
